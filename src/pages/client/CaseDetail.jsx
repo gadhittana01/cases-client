@@ -110,7 +110,7 @@ const CaseDetail = () => {
     try {
       setError('');
       
-      // Validate case is still open
+
       if (caseData && caseData.status !== 'open') {
         setError('This case is no longer open for quotes');
         return;
@@ -118,15 +118,15 @@ const CaseDetail = () => {
 
       const response = await api.acceptQuote(quoteId);
       
-      // Redirect to Stripe Payment Link
+
       if (response.payment_link_url || response.client_secret) {
-        window.location.href = response.payment_link_url || response.client_secret;
+        window.location.href = response.payment_link_url;
       } else {
         throw new Error('Payment link not received');
       }
     } catch (err) {
       setError(err.message || 'Failed to accept quote');
-      // Reload case to get updated status
+
       loadCase();
     }
   };

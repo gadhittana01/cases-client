@@ -44,17 +44,17 @@ const CreateCase = () => {
     setLoading(true);
 
     try {
-      // Create case first
+
       const caseData = await api.createCase(formData);
       
-      // Upload files if any
+
       if (files.length > 0) {
         for (const file of files) {
           try {
             await api.uploadCaseFile(caseData.id, file);
           } catch (fileErr) {
             console.error('Failed to upload file:', fileErr);
-            // Continue with other files
+
           }
         }
       }

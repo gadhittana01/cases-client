@@ -61,7 +61,7 @@ code {
   padding: 24px;
 }
 
-/* Buttons */
+
 .btn {
   padding: 12px 24px;
   border: none;
@@ -149,7 +149,7 @@ code {
   transform: none !important;
 }
 
-/* Forms */
+
 .form-group {
   margin-bottom: 24px;
 }
@@ -195,7 +195,7 @@ code {
   font-family: inherit;
 }
 
-/* Cards */
+
 .card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -226,7 +226,7 @@ code {
   font-size: 20px;
 }
 
-/* Badges */
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -273,7 +273,7 @@ code {
   color: var(--white);
 }
 
-/* Tables */
+
 table {
   width: 100%;
   border-collapse: separate;
@@ -312,7 +312,7 @@ table tr:last-child td {
   border-bottom: none;
 }
 
-/* Pagination */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -357,7 +357,7 @@ table tr:last-child td {
   padding: 0 8px;
 }
 
-/* Messages */
+
 .error {
   color: var(--danger);
   margin-top: 8px;
@@ -384,7 +384,7 @@ table tr:last-child td {
   gap: 8px;
 }
 
-/* Navbar */
+
 .navbar {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -445,7 +445,7 @@ table tr:last-child td {
   font-weight: 500;
 }
 
-/* Empty State */
+
 .empty-state {
   text-align: center;
   padding: 80px 20px;
@@ -472,7 +472,7 @@ table tr:last-child td {
   opacity: 0.3;
 }
 
-/* Loading */
+
 .loading {
   display: flex;
   flex-direction: column;
@@ -497,7 +497,7 @@ table tr:last-child td {
   }
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .container {
     padding: 16px;
@@ -527,7 +527,7 @@ table tr:last-child td {
   }
 }
 
-/* Animations */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -543,7 +543,7 @@ table tr:last-child td {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* File Upload */
+
 .file-upload-area {
   border: 2px dashed var(--gray-300);
   border-radius: var(--radius);

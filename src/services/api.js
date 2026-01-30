@@ -4,12 +4,12 @@ if (!import.meta.env.VITE_API_URL) {
   console.warn('VITE_API_URL is not set, using default:', API_BASE_URL);
 }
 
-// Helper function to get auth token
+
 const getToken = () => {
   return localStorage.getItem('token');
 };
 
-// Helper function to make API requests
+
 const request = async (endpoint, options = {}) => {
   const token = getToken();
   const headers = {
@@ -37,7 +37,7 @@ const request = async (endpoint, options = {}) => {
 };
 
 export const api = {
-  // Auth endpoints
+
   login: async (email, password) => {
     return request('/auth/login', {
       method: 'POST',
@@ -57,7 +57,7 @@ export const api = {
     return request('/auth/profile');
   },
 
-  // Client case endpoints
+
   getMyCases: async (page = 1, pageSize = 10) => {
     return request(`/client/cases?page=${page}&page_size=${pageSize}`);
   },
@@ -94,7 +94,7 @@ export const api = {
     return response.json();
   },
 
-  // Quote endpoints
+
   acceptQuote: async (quoteId) => {
     return request('/client/quotes/accept', {
       method: 'POST',
@@ -102,7 +102,7 @@ export const api = {
     });
   },
 
-  // Lawyer marketplace endpoints
+
   getMarketplaceCases: async (filters = {}) => {
     const params = new URLSearchParams();
     if (filters.category) params.append('category', filters.category);
@@ -118,7 +118,7 @@ export const api = {
     return request(`/lawyer/marketplace/cases/${id}`);
   },
 
-  // Quote endpoints for lawyers
+
   getMyQuotes: async (filters = {}) => {
     const params = new URLSearchParams();
     if (filters.status) params.append('status', filters.status);
@@ -147,7 +147,7 @@ export const api = {
     });
   },
 
-  // File download endpoint
+
   getFileDownloadUrl: async (fileId) => {
     return request(`/files/${fileId}/download`);
   },

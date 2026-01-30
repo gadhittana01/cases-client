@@ -89,15 +89,15 @@ const MarketplaceCaseDetail = () => {
       const data = await api.getMarketplaceCase(id);
       setCaseData(data);
 
-      // If has_submitted is true, fetch the specific quote details
+
       if (data.has_submitted) {
         try {
           const response = await api.getMyQuoteForCase(id);
-          // API returns { quote: {...} }, extract the quote object
+
           const quoteData = response.quote;
           if (quoteData) {
             setExistingQuote(quoteData);
-            // Pre-fill form with existing quote
+
             setFormData({
               amount: quoteData.amount?.toString() || '',
               expected_days: quoteData.expected_days?.toString() || '',
@@ -109,9 +109,9 @@ const MarketplaceCaseDetail = () => {
         }
       }
 
-      // If files are present, lawyer has accepted quote and case is engaged
+
       if (data.files && data.files.length > 0) {
-        // Full case details are available
+
       }
     } catch (err) {
       setError(err.message);
@@ -126,7 +126,7 @@ const MarketplaceCaseDetail = () => {
     setSubmitting(true);
 
     try {
-      // Validate form
+
       const amount = parseFloat(formData.amount);
       const expectedDays = parseInt(formData.expected_days);
 
@@ -138,20 +138,20 @@ const MarketplaceCaseDetail = () => {
       }
 
       const quoteData = {
-        amount: amount.toString(), // Convert to string as backend expects string
+        amount: amount.toString(),
         expected_days: expectedDays,
         note: formData.note || '',
       };
 
       if (caseData.has_submitted && existingQuote) {
-        // Update existing quote
+
         await api.updateQuote(id, quoteData);
       } else {
-        // Create new quote
+
         await api.createQuote(id, quoteData);
       }
 
-      // Reload case and quote
+
       await loadCase();
       setError('');
     } catch (err) {

@@ -6,7 +6,7 @@ const PaymentProcessing = () => {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const [status, setStatus] = useState('processing'); // processing, success, failed
+  const [status, setStatus] = useState('processing');
   const [paymentStatus, setPaymentStatus] = useState(null);
   const [error, setError] = useState('');
 
@@ -19,7 +19,7 @@ const PaymentProcessing = () => {
       return;
     }
 
-    // Initialize Pusher
+
     const pusherKey = import.meta.env.VITE_PUSHER_KEY;
     const pusherCluster = import.meta.env.VITE_PUSHER_CLUSTER;
     
@@ -33,22 +33,22 @@ const PaymentProcessing = () => {
       cluster: pusherCluster,
     });
 
-    // Subscribe to payment channel
+
     const channel = pusher.subscribe(`payment-${paymentLinkId}`);
 
-    // Listen for payment completed event (webhook → backend → Pusher)
+
     channel.bind('payment-completed', (data) => {
       console.log('Payment completed via Pusher:', data);
       setPaymentStatus(data);
       setStatus('success');
       
-      // Redirect to case detail page after 2 seconds
+
       setTimeout(() => {
         navigate(`/client/cases/${data.case_id}`);
       }, 2000);
     });
 
-    // Timeout after 30 seconds (webhook should arrive within seconds)
+
     const timeout = setTimeout(() => {
       if (status === 'processing') {
         setError('Payment processing is taking longer than expected. Please check your case details or refresh the page.');
@@ -56,7 +56,7 @@ const PaymentProcessing = () => {
       }
     }, 30000);
 
-    // Cleanup
+
     return () => {
       clearTimeout(timeout);
       pusher.unsubscribe(`payment-${paymentLinkId}`);
