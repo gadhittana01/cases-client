@@ -5,11 +5,9 @@ WORKDIR /app
 
 # Accept build arguments for Vite environment variables
 ARG VITE_API_URL=http://localhost:8000/api/v1
-ARG VITE_STRIPE_PUBLISHABLE_KEY
 
 # Set environment variables for build
 ENV VITE_API_URL=$VITE_API_URL
-ENV VITE_STRIPE_PUBLISHABLE_KEY=$VITE_STRIPE_PUBLISHABLE_KEY
 
 # Copy package files
 COPY package.json ./
